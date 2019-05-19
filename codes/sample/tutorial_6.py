@@ -26,11 +26,15 @@ from __future__ import print_function
 # Reinforcement Learning, An Introduction
 # MIT Press, 1998
 
+try:
+    from malmo import MalmoPython
+except:
+    import MalmoPython
+
 from future import standard_library
 standard_library.install_aliases()
 from builtins import range
 from builtins import object
-from malmo import MalmoPython
 import json
 import logging
 import os
