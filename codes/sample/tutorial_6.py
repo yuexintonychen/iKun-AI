@@ -30,7 +30,7 @@ from future import standard_library
 standard_library.install_aliases()
 from builtins import range
 from builtins import object
-import MalmoPython
+from malmo import MalmoPython
 import json
 import logging
 import os
