@@ -8,6 +8,10 @@ import sys
 import time
 import json
 
+def get_mission_xml(){
+    
+}
+
 def main():
     # Start mission
     # Create default Malmo objects:
