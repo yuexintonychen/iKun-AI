@@ -8,9 +8,9 @@ import sys
 import time
 import json
 
-def get_mission_xml(){
-    
-}
+def get_mission_xml():
+    xml_file = open("./ikun_mission.xml", "r")
+    return xml_file.read()
 
 def main():
     # Start mission
@@ -29,12 +29,13 @@ def main():
     if agent_host.receivedArgument("test"):
         num_repeats = 1
     else:
-        num_repeats = 10
+        num_repeats = 1
 
     for i in range(num_repeats):
         size = int(6 + 0.5*i)
         print("Size of maze:", size)
-        my_mission = MalmoPython.MissionSpec(GetMissionXML("0", 0.4 + float(i/20.0), size), True)
+        my_mission = MalmoPython.MissionSpec(get_mission_xml(), True)
+        # my_mission = MalmoPython.MissionSpec(get_mission_xml(), True)
         my_mission_record = MalmoPython.MissionRecordSpec()
         my_mission.requestVideo(800, 500)
         my_mission.setViewpoint(1)
@@ -53,3 +54,20 @@ def main():
                     exit(1)
                 else:
                     time.sleep(2)
+
+        # Loop until mission starts:
+        print("Waiting for the mission", (i+1), "to start ",)
+        world_state = agent_host.getWorldState()
+        while not world_state.has_mission_begun:
+            #sys.stdout.write(".")
+            time.sleep(0.1)
+            world_state = agent_host.getWorldState()
+            for error in world_state.errors:
+                print("Error:",error.text)
+
+        print()
+        print("Mission", (i+1), "running.")
+
+
+if __name__ == "__main__":
+    main()
