@@ -369,7 +369,7 @@ def get_xy_position_of_maze_map_by_position_of_actual_map(\
     position_in_actual_map, grid):
     # position_in_actual_map: index in grid
     # Assuming grid is 61 * 61 (defined in XML as ObservationFromGrid)
-    # returning (x, y) (Started from (0, 0) as top left)
+    # returning (x, y) (Started from (0, 0) as bottom right)
     size_of_grid = len(grid)
     y_position = position_in_actual_map // AGENT_OBSERVATION_LENGTH - \
         first_block_index_in_actual_map // AGENT_OBSERVATION_LENGTH
@@ -379,7 +379,7 @@ def get_xy_position_of_maze_map_by_position_of_actual_map(\
 
 def get_position_of_actual_map_by_xy_position_of_maze_map(\
     xy_position_in_maze_map, grid):
-    # xy_position_in_maze_map: (x, y) (Started from (0, 0) as top left)
+    # xy_position_in_maze_map: (x, y) (Started from (0, 0) as bottom right)
     # Assuming grid is 61 * 61 (defined in XML as ObservationFromGrid)
     # returning index in grid
     return xy_position_in_maze_map[1] * AGENT_OBSERVATION_LENGTH + first_block_index_in_actual_map \
