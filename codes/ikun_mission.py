@@ -588,13 +588,13 @@ def main():
 
         print("Started: agent current yaw(face to where):", yaw_of_agent)
 
-        # test_moving(agent_host, [2, 3, 2, 2, 1])
         # go_to_goal_and_finish_mission(grid, start_and_end_positions_in_actual_map[0], \
         #     start_and_end_positions_in_actual_map[1], world_state, agent_host, i)
 
-        print("How many walkable blocks in front of agent's direction:", agent_current_direction, "is walk able? Answer:", \
+        print("Started: How many walkable blocks in front of agent's direction:", agent_current_direction, "is walk able? Answer:", \
             get_num_of_walkable_blocks_in_front_of_agent(agent_current_position_xy_in_maze, size_of_maze, grid))
 
+        # test_moving(agent_host, [3, 3, 0, 3, 3, 0, 3])
 
 if __name__ == "__main__":
     main()
