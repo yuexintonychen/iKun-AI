@@ -592,7 +592,7 @@ def main():
         # go_to_goal_and_finish_mission(grid, start_and_end_positions_in_actual_map[0], \
         #     start_and_end_positions_in_actual_map[1], world_state, agent_host, i)
 
-        print("How many blocks in front of agent's direction:", agent_current_direction, "is walk able? Answer:", \
+        print("How many walkable blocks in front of agent's direction:", agent_current_direction, "is walk able? Answer:", \
             get_num_of_walkable_blocks_in_front_of_agent(agent_current_position_xy_in_maze, size_of_maze, grid))
 
 
