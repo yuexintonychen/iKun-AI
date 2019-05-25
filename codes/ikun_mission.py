@@ -11,9 +11,13 @@ import time
 import json
 import re
 import copy
+import numpy as np
 
 # parameters (fixed)
 AGENT_OBSERVATION_LENGTH = 61
+
+# size of the maze
+size_of_maze = 10
 
 # 0 means front; 1 means right; 2 means back; 3 means left (in default direction: 0)
 agent_current_direction = 0
@@ -499,6 +503,19 @@ def get_num_of_walkable_blocks_in_front_of_agent(agent_current_position_xy_in_ma
         result += 1
     return result
 
+def maze_to_2dMatrix(maze_map, size_of_maze):
+    matrix2d = []
+    for i in range(0, len(maze_map), size_of_maze):
+        subList = []
+        for innerI in range(0, size_of_maze):
+            if is_reachable(maze_map[i+innerI]):
+                subList.append(0)
+            else:
+                subList.append(1)
+        matrix2d.append(subList)
+    matrix2d = np.array(matrix2d)
+    return matrix2d
+
 def main():
     # Start mission
     # Create default Malmo objects:
@@ -520,7 +537,6 @@ def main():
 
     for i in range(num_repeats):
         # size = int(6 + 0.5*i)
-        size_of_maze = 10
         print("Size of maze:", size_of_maze)
         #my_mission = MalmoPython.MissionSpec(get_mission_xml("0", 0.4 + float(i/20.0), size_of_maze, 0), True)
         my_mission = MalmoPython.MissionSpec(get_mission_xml("2", 0.4 + float(i/20.0), size_of_maze, 0), True)
@@ -562,6 +578,8 @@ def main():
         print("Size of actual map:", len(grid))
         
         maze_map = get_maze_map(grid)
+        print("maze map:", maze_map)
+
         start_and_end_positions_in_actual_map = find_start_end(grid)
         
         print("size of maze map:", len(maze_map))
