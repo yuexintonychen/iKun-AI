@@ -4,7 +4,7 @@
         We plan to make some mazes for our agent to play in (The mazes will be in 2D, but if we could make a good progress in the project, we might make the maze to be 3D). Our agent's input will be the voxels in front of its sight, which will be similar to what a normal player can see in Minecraft (however, we might also change this to be a small range of voxels around the agent). The agent's goal (output) will be trying to get out of the maze as fast as possible using the limited resources we have given to the agent.
 
 #### AI/ML Algorithms
-        We will be using reinforcement learning algorithm (Q-learning and Neural Network). We might be also using conventional shortest path algorithms like Dijkstra's algorithm for comparing the difference if possible.
+        We will be using Deep Q Learning with Neural Network Policy built in. We might be also using conventional shortest path algorithms like Dijkstra's algorithm for comparing the difference if possible.
 
 #### Evaluation Plan
         For quantitative evaluation, we plan to use two features as metrics. The first metric is the time taken for the agent to get out of a maze (measured in fixed timestep). Thid metric will indicate how efficient a particular algorithm is implemented. The second metric is the number of voxels that the agent has visited (repeated visits will be counted separately as we are measuring how far the agent has travelled to reach the goal).
