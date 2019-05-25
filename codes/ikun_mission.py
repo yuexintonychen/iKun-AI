@@ -499,6 +499,10 @@ def get_num_of_walkable_blocks_in_front_of_agent(agent_current_position_xy_in_ma
         result += 1
     return result
 
+def is_finish(block):
+    # return true if the agent is standing in the goal block
+    return block == "redstone_block"
+
 def main():
     # Start mission
     # Create default Malmo objects:
@@ -513,10 +517,8 @@ def main():
         print(agent_host.getUsage())
         exit(0)
 
-    if agent_host.receivedArgument("test"):
-        num_repeats = 1
-    else:
-        num_repeats = 1
+    # The following one line is for setting how many times you want the agent to repeat
+    num_repeats = 1
 
     for i in range(num_repeats):
         # size = int(6 + 0.5*i)
