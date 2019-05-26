@@ -17,7 +17,7 @@ import numpy as np
 AGENT_OBSERVATION_LENGTH = 61
 
 # size of the maze
-size_of_maze = 10
+size_of_maze = 7
 
 # 0 means front; 1 means right; 2 means back; 3 means left (in default direction: 0)
 agent_current_direction = 0
@@ -503,24 +503,65 @@ def get_num_of_walkable_blocks_in_front_of_agent(agent_current_position_xy_in_ma
         result += 1
     return result
 
-<<<<<<< HEAD
 def maze_to_2dMatrix(maze_map, size_of_maze):
     matrix2d = []
-    for i in range(0, len(maze_map), size_of_maze):
+    print('length of maze_map', len(maze_map))
+    """for i in range(0, len(maze_map), size_of_maze):
         subList = []
         for innerI in range(0, size_of_maze):
+            print(i, innerI)
+            print(i+innerI)
             if is_reachable(maze_map[i+innerI]):
-                subList.append(0)
-            else:
                 subList.append(1)
+            else:
+                subList.append(0)
         matrix2d.append(subList)
+    """
+    i = 0
+    while i < len(maze_map):
+        subList = []
+        innerI = 0
+        while innerI < size_of_maze:
+            if is_reachable(maze_map[i+innerI]):
+                subList.append(1)
+            else:
+                subList.append(0)
+            innerI += 1
+        matrix2d.append(subList)
+        i += size_of_maze
+    
     matrix2d = np.array(matrix2d)
     return matrix2d
-=======
+
 def is_finish(block):
     # return true if the agent is standing in the goal block
     return block == "redstone_block"
->>>>>>> c5a7eb1bc992007bbc6e187e04b9547b9df12c96
+
+def positionTransition(grid, matrixArray, orientation, size_of_maze):
+    start_and_end_positions_in_actual_map = find_start_end(grid)
+    startPosition = get_xy_position_of_maze_map_by_position_of_actual_map(\
+    start_and_end_positions_in_actual_map[0], \
+        grid)
+    
+    newOrientation = orientation
+    if orientation == 0:
+        newOrientation = 1
+    elif orientation == 1:
+        newOrientation = 0
+    elif orientation == 2:
+        newOrientation = 3
+    elif orientation == 3:
+        newOrientation = 2
+
+    newStartPosition = [size_of_maze - startPosition[1]-1, \
+        size_of_maze - startPosition[0]-1, newOrientation]
+    newStartPosition = np.array(newStartPosition)
+
+    concatMatrix = np.concatenate((matrixArray, newStartPosition), axis = None)
+    concatMatrix = np.reshape(concatMatrix,(1,-1))
+    print(concatMatrix.shape)
+
+    np.save("hello", concatMatrix)
 
 def main():
     # Start mission
@@ -583,6 +624,9 @@ def main():
         
         maze_map = get_maze_map(grid)
         print("maze map:", maze_map)
+        #The maze construction
+        matrix2d = maze_to_2dMatrix(maze_map, size_of_maze).flatten()
+        matrixArray = matrix2d.flatten()
 
         start_and_end_positions_in_actual_map = find_start_end(grid)
         
@@ -617,6 +661,8 @@ def main():
             get_num_of_walkable_blocks_in_front_of_agent(agent_current_position_xy_in_maze, size_of_maze, grid))
 
         # test_moving(agent_host, [3, 3, 0, 3, 3, 0, 3])
+
+        positionTransition(grid, matrixArray, yaw_of_agent, size_of_maze)
 
 if __name__ == "__main__":
     main()
