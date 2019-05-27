@@ -247,7 +247,7 @@ def get_mission_xml(seed, gp, size=10, yaw=0):
             <Mission xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
               <About>
-                <Summary>Hello iKun!</Summary>
+                <Summary>Adventure of Aiku</Summary>
               </About>
 
             <ServerSection>
@@ -280,7 +280,7 @@ def get_mission_xml(seed, gp, size=10, yaw=0):
               </ServerSection>
 
               <AgentSection mode="Survival">
-                <Name>iKunBot</Name>
+                <Name>Aiku</Name>
                 <AgentStart>
                     <Placement x="0.5" y="56.0" z="0.5" pitch="30" yaw="''' + str(yaw) + '''"/>
                 </AgentStart>
@@ -360,7 +360,10 @@ def move_forward(agent_host):
     # move 1 to the agent's current direction(fake)
     # Also deal with the agent position variables (both)
     global agent_current_position_xy_in_maze, agent_current_position_index_in_grid, matrix2dOriginal, maze_map
+    
+    
     backup_xy_in_maze = copy.deepcopy(agent_current_position_xy_in_maze)
+    backup_agent_current_posisition_index_in_grid = agent_current_position_index_in_grid 
     """
     if agent_current_direction == 0:
         agent_host.sendCommand("movesouth 1")
@@ -393,8 +396,9 @@ def move_forward(agent_host):
         if (maze_map[size_of_maze*(y+1)-(size_of_maze-x)] == "diamond_block"):
             agent_host.sendCommand("movesouth 1")
         else:
-            print('it cannot move')
+            print('Encountered Obstacle')
             agent_current_position_xy_in_maze = backup_xy_in_maze
+            agent_current_position_index_in_grid = backup_agent_current_posisition_index_in_grid
             
     elif agent_current_direction == 1:
        
@@ -404,8 +408,9 @@ def move_forward(agent_host):
         if(maze_map[size_of_maze*(y+1)-(size_of_maze-x)] == "diamond_block"):
             agent_host.sendCommand("movewest 1")
         else:
-            print('it cannot move')
+            print('Encountered Obstacle')
             agent_current_position_xy_in_maze = backup_xy_in_maze
+            agent_current_position_index_in_grid = backup_agent_current_posisition_index_in_grid
         
     elif agent_current_direction == 2:
         
@@ -415,8 +420,9 @@ def move_forward(agent_host):
         if(maze_map[size_of_maze*(y+1)-(size_of_maze-x)] == "diamond_block"):
             agent_host.sendCommand("movenorth 1")
         else:
-            print('it cannot move')
+            print('Encountered Obstacle')
             agent_current_position_xy_in_maze = backup_xy_in_maze
+            agent_current_position_index_in_grid = backup_agent_current_posisition_index_in_grid
         
     elif agent_current_direction == 3:
         
@@ -426,8 +432,9 @@ def move_forward(agent_host):
         if(maze_map[size_of_maze*(y+1)-(size_of_maze-x)] == "diamond_block"):
             agent_host.sendCommand("moveeast 1")
         else:
-            print('it cannot move')
+            print('Encountered Obstacle')
             agent_current_position_xy_in_maze = backup_xy_in_maze
+            agent_current_position_index_in_grid = backup_agent_current_posisition_index_in_grid
         
 
 def get_xy_position_of_maze_map_by_position_of_actual_map(\
@@ -456,8 +463,8 @@ def test_moving(agent_host, directions):
     # e.g. giving directions as [0, 1, 2, 0]
     # direction here is absolute to the agent's current direction
     # p.s. this function will restore the agent's direction back to the original one when it finishes moving
-    print("Before moving, the agent is at xy_maze:", agent_current_position_xy_in_maze)
-        #"and it is at index_of_grid:", agent_current_position_index_in_grid)
+    print("Before moving, the agent is at xy_maze:", agent_current_position_xy_in_maze, \
+        "and it is at index_of_grid:", agent_current_position_index_in_grid)
     global agent_current_direction
     original_direction = agent_current_direction
     for direction in directions:
@@ -477,7 +484,7 @@ def test_moving(agent_host, directions):
             move_forward(agent_host)
             print('The agent move forward')
         print("After making a move of [" + str(direction) + "], the agent is at xy_maze:", \
-            agent_current_position_xy_in_maze) #, "and it is at index_of_grid:", agent_current_position_index_in_grid)
+            agent_current_position_xy_in_maze , "and it is at index_of_grid:", agent_current_position_index_in_grid)
         #agent_current_direction = original_direction
         time.sleep(2)
 
@@ -841,8 +848,13 @@ def main():
         print('The list:', actionList)
         #raise('STOP HERE')
         test_moving(agent_host, actionList)
-    
+        
+        print("Training complete. Training result can be found in training_result.txt.")
 
+        go_to_goal_and_finish_mission(grid, agent_current_position_index_in_grid, \
+             start_and_end_positions_in_actual_map[1], world_state, agent_host, i)
+
+        print("Aiku did it!")
     
 if __name__ == "__main__":
     main()

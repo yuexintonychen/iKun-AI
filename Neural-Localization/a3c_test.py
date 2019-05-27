@@ -102,13 +102,15 @@ def test(rank, args, shared_model):
             accuracy_list.append(accuracy)
 
             if(len(rewards_list) >= test_freq):
+                trFile = open("training_result.txt", "w+")
                 time_elapsed = time.gmtime(time.time() - start_time)
-                print(" ".join([
-                    "Time: {0:0=2d}d".format(time_elapsed.tm_mday-1),
-                    "{},".format(time.strftime("%Hh %Mm %Ss", time_elapsed)),
+                trFile.write(" ".join([
+                    #"Time: {0:0=2d}d".format(time_elapsed.tm_mday-1),
+                    #"{},".format(time.strftime("%Hh %Mm %Ss", time_elapsed)),
                     "Avg Reward: {0:.3f},".format(np.mean(rewards_list)),
                     "Avg Accuracy: {0:.3f},".format(np.mean(accuracy_list)),
                     "Best Reward: {0:.3f}".format(best_reward)]))
+                trFile.close()
                 logging.info(" ".join([
                     "Time: {0:0=2d}d".format(time_elapsed.tm_mday-1),
                     "{},".format(time.strftime("%Hh %Mm %Ss", time_elapsed)),
@@ -123,6 +125,7 @@ def test(rank, args, shared_model):
                     best_reward = np.mean(rewards_list)
                 rewards_list = []
                 accuracy_list = []
+
 
             reward_sum = 0
             episode_length = 0
