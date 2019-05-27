@@ -1,4 +1,4 @@
-﻿﻿->## Proposal<-
+﻿﻿## Proposal
 
 #### Summary of the Project
         We plan to make some mazes for our agent to play in (The mazes will be in 2D, but if we could make a good progress in the project, we might make the maze to be 3D). Our agent's input will be the voxels in front of its sight, which will be similar to what a normal player can see in Minecraft (however, we might also change this to be a small range of voxels around the agent). The agent's goal (output) will be trying to get out of the maze as fast as possible using the limited resources we have given to the agent.
