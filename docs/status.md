@@ -25,7 +25,7 @@ For evaluation, we've run the agent with the A3C algorithm within a controlled s
 
 In order to evaluate the overall performance of our agent, we have collected the following categories of statistical data during the 10 tests: the number of actions the agent has taken during training (60 actions for each test), the time taken for fitting the maze map to the pre-trained model (during each test), the time taken for the agent to determine the shortest path from start to end after the agent determines its current position (using the pre-trained model, during each test) and the success/failure rate of the 10 tests.
 
-<img src="Training Time.png"> 
+<img src="Training_Time.png"> 
 
 Based on the training time graph, the aveage time taken for fitting the maze map to the pre-trained model among 10 tests is 1.70 seconds. The standard deviation is 0.17 seconds.
 
