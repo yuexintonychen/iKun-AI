@@ -39,6 +39,9 @@ last_block_index_in_actual_map = -1
 #malmo agent
 agent_host = None
 
+#actionFile counter
+actionHistCounter = 0
+
 # Helpful Classes or functions not related to the core of the project
 
 # Priority dictionary using binary heaps
@@ -356,7 +359,7 @@ def agent_turn_right():
         agent_current_direction = 0
     #print("After turn right:", agent_current_direction)
 
-def move_forward(agent_host):
+def move_forward(agent_host, grid):
     # move 1 to the agent's current direction(fake)
     # Also deal with the agent position variables (both)
     global agent_current_position_xy_in_maze, agent_current_position_index_in_grid, matrix2dOriginal, maze_map
@@ -384,16 +387,19 @@ def move_forward(agent_host):
     """
     print("agent_current_direction: ",agent_current_direction)
 
+    print("In move_forward:", agent_current_position_xy_in_maze)
+
     #JUST FOR TEST
     if agent_current_direction == 0:
         
         agent_current_position_xy_in_maze[1] += 1
         agent_current_position_index_in_grid += AGENT_OBSERVATION_LENGTH
-        x,y = agent_current_position_xy_in_maze[0], agent_current_position_xy_in_maze[1]
+        #x,y = agent_current_position_xy_in_maze[0], agent_current_position_xy_in_maze[1]
         #We use formula caclulating maze map index to check the next step
-        print(len(maze_map))
-        print(maze_map[size_of_maze*(y+1)-(size_of_maze-x)])
-        if (maze_map[size_of_maze*(y+1)-(size_of_maze-x)] == "diamond_block"):
+
+        print("In move_foreward, direction is", agent_current_direction, "; and next position:", agent_current_position_xy_in_maze)
+        index = get_position_of_actual_map_by_xy_position_of_maze_map(agent_current_position_xy_in_maze, grid)
+        if is_reachable(grid[index]):
             agent_host.sendCommand("movesouth 1")
         else:
             print('Encountered Obstacle')
@@ -405,7 +411,10 @@ def move_forward(agent_host):
         agent_current_position_xy_in_maze[0] -= 1
         agent_current_position_index_in_grid -= 1
         x,y = agent_current_position_xy_in_maze[0], agent_current_position_xy_in_maze[1]
-        if(maze_map[size_of_maze*(y+1)-(size_of_maze-x)] == "diamond_block"):
+
+        print("In move_foreward, direction is", agent_current_direction, "; and next position:", agent_current_position_xy_in_maze)
+        index = get_position_of_actual_map_by_xy_position_of_maze_map(agent_current_position_xy_in_maze, grid)
+        if is_reachable(grid[index]):
             agent_host.sendCommand("movewest 1")
         else:
             print('Encountered Obstacle')
@@ -417,7 +426,10 @@ def move_forward(agent_host):
         agent_current_position_xy_in_maze[1] -= 1
         agent_current_position_index_in_grid -= AGENT_OBSERVATION_LENGTH
         x,y = agent_current_position_xy_in_maze[0], agent_current_position_xy_in_maze[1]
-        if(maze_map[size_of_maze*(y+1)-(size_of_maze-x)] == "diamond_block"):
+
+        print("In move_foreward, direction is", agent_current_direction, "; and next position:", agent_current_position_xy_in_maze)
+        index = get_position_of_actual_map_by_xy_position_of_maze_map(agent_current_position_xy_in_maze, grid)
+        if is_reachable(grid[index]):
             agent_host.sendCommand("movenorth 1")
         else:
             print('Encountered Obstacle')
@@ -428,8 +440,12 @@ def move_forward(agent_host):
         
         agent_current_position_xy_in_maze[0] += 1
         agent_current_position_index_in_grid += 1
-        x,y = agent_current_position_xy_in_maze[0], agent_current_position_xy_in_maze[1]
-        if(maze_map[size_of_maze*(y+1)-(size_of_maze-x)] == "diamond_block"):
+        #x,y = agent_current_position_xy_in_maze[0], agent_current_position_xy_in_maze[1]
+
+        print("In move_foreward, direction is", agent_current_direction, "; and next position:", agent_current_position_xy_in_maze)
+        
+        index = get_position_of_actual_map_by_xy_position_of_maze_map(agent_current_position_xy_in_maze, grid)
+        if is_reachable(grid[index]):
             agent_host.sendCommand("moveeast 1")
         else:
             print('Encountered Obstacle')
@@ -457,7 +473,7 @@ def get_position_of_actual_map_by_xy_position_of_maze_map(\
     return xy_position_in_maze_map[1] * AGENT_OBSERVATION_LENGTH + first_block_index_in_actual_map \
         + xy_position_in_maze_map[0]
 
-def test_moving(agent_host, directions):
+def test_moving(agent_host, directions, grid):
     # this function is used for testing agent to move
     # directions should be a list
     # e.g. giving directions as [0, 1, 2, 0]
@@ -481,7 +497,7 @@ def test_moving(agent_host, directions):
             agent_turn_left()
             print('The agent turn left')
         elif direction == 0:    
-            move_forward(agent_host)
+            move_forward(agent_host, grid)
             print('The agent move forward')
         print("After making a move of [" + str(direction) + "], the agent is at xy_maze:", \
             agent_current_position_xy_in_maze , "and it is at index_of_grid:", agent_current_position_index_in_grid)
@@ -691,6 +707,7 @@ def main():
     global agent_host
     global matrix2dOriginal
     global maze_map
+    global actionHistCounter
     agent_host = MalmoPython.AgentHost()
     try:
         agent_host.parse( sys.argv )
@@ -703,13 +720,22 @@ def main():
         exit(0)
 
     # The following one line is for setting how many times you want the agent to repeat
-    num_repeats = 1
+    num_repeats = 10
+
+    esFile = open("Eval_Stats.txt", "w+")
+    esFile.write("\n")
+    esFile.close()
+
+    esFile = open("Eval_Stats.txt", "a")
 
     for i in range(num_repeats):
+        esFile.write("Run #"+str(i+1)+"\n")
+        actionHistCounter = i+1
         # size = int(6 + 0.5*i)
         print("Size of maze:", size_of_maze)
         #my_mission = MalmoPython.MissionSpec(get_mission_xml("0", 0.4 + float(i/20.0), size_of_maze, 0), True)
-        my_mission = MalmoPython.MissionSpec(get_mission_xml("2", 0.4 + float(i/20.0), size_of_maze, 0), True)
+        print("Parameters of the mission:", str(i), "next:", 0.4 + float(i/20.0), "size:", size_of_maze)
+        my_mission = MalmoPython.MissionSpec(get_mission_xml(str(i), 0.4 + float(i/20.0), size_of_maze, 0), True)
         # my_mission = MalmoPython.MissionSpec(get_mission_xml(), True)
         my_mission_record = MalmoPython.MissionRecordSpec()
         my_mission.requestVideo(800, 500)
@@ -792,16 +818,20 @@ def main():
 
         positionTransition(grid, matrixArray, yaw_of_agent, size_of_maze)
 
-        os.system("python ../Neural-Localization/a3c_main.py --num-processes 0 --evaluate 1 --map-size 21 --max-episode-length 60 --load ../Neural-Localization/pretrained_models/m21_l60 --test-data ../Neural-Localization/test_data/hello.npy")
+        trainingStart = time.time()
+        os.system("python ../Neural-Localization/a3c_main.py --num-processes 0 --evaluate 1 --map-size 21 --max-episode-length 60 --load ../Neural-Localization/pretrained_models/m21_l60 --test-data ../Neural-Localization/test_data/hello.npy --counter " + str(actionHistCounter))
 
         stringList = []
         
         while True:
-            actionHistFile = open("action_history.txt", "r")
+            actionHistFile = open("action_history_"+str(actionHistCounter)+"_.txt", "r")
             stringList = actionHistFile.readlines()
             if (stringList[len(stringList)-1] == "END"):
                 break
-        
+        trainingEnd = time.time()
+        trainingElapsed = trainingEnd - trainingStart
+        esFile.write("Training Time: " + str(trainingElapsed) + " ")
+
         actionHistFile.close()
         
         #actionList = []
@@ -847,14 +877,20 @@ def main():
         
         print('The list:', actionList)
         #raise('STOP HERE')
-        test_moving(agent_host, actionList)
+        test_moving(agent_host, actionList, grid)
         
         print("Training complete. Training result can be found in training_result.txt.")
 
+        travelStart = time.time()
         go_to_goal_and_finish_mission(grid, agent_current_position_index_in_grid, \
              start_and_end_positions_in_actual_map[1], world_state, agent_host, i)
+        travelEnd = time.time()
+        travelElapsed = travelEnd - travelStart
+        esFile.write("Agent Travel Time: "+str(travelElapsed) + "\n\n")
 
         print("Aiku did it!")
     
+    esFile.close()
+
 if __name__ == "__main__":
     main()

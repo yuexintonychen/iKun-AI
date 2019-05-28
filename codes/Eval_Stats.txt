@@ -1,0 +1,31 @@
+
+Avg Accuracy: 1.000 Avg Accuracy: 1.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Avg Accuracy: 1.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Run #1
+Training Time: 1.9037752151489258 Agent Travel Time: 5.253705024719238
+
+Run #2
+Training Time: 2.0049657821655273 Agent Travel Time: 8.921536207199097
+
+Run #3
+Training Time: 1.6695139408111572 Agent Travel Time: 5.052783250808716
+
+Run #4
+Training Time: 1.663667917251587 Agent Travel Time: 5.25596809387207
+
+Run #5
+Training Time: 1.827104091644287 Agent Travel Time: 2.714138984680176
+
+Run #6
+Training Time: 1.4913737773895264 Agent Travel Time: 3.9505813121795654
+
+Run #7
+Training Time: 1.73166823387146 Agent Travel Time: 3.32055926322937
+
+Run #8
+Training Time: 1.588118076324463 Agent Travel Time: 3.9368128776550293
+
+Run #9
+Training Time: 1.6036765575408936 Agent Travel Time: 6.659711599349976
+
+Run #10
+Training Time: 1.4911298751831055 Agent Travel Time: 5.847915887832642
+

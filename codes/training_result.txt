@@ -1,1 +1,1 @@
-Avg Reward: 51.142, Avg Accuracy: 1.000, Best Reward: 0.000
+Avg Reward: nan, Avg Accuracy: 0.000, Best Reward: 0.000

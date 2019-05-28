@@ -53,6 +53,10 @@ parser.add_argument('-td', '--test-data', type=str,
                     help='''Test data filepath
                             (default: ./test_data/m7_n1000.npy)''')
 
+# Added for time
+
+parser.add_argument("--counter", help="the counter of missions")
+
 if __name__ == '__main__':
     args = parser.parse_args()
     torch.manual_seed(args.seed)
@@ -77,7 +81,12 @@ if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal.signal(signal.SIGINT, signal.SIG_IGN))
     processes = []
 
-    p = mp.Process(target=test, args=(args.num_processes, args, shared_model))
+    # Process counter
+    actual_counter_string = ""
+    if args.counter:
+        actual_counter_string = args.counter
+
+    p = mp.Process(target=test, args=(args.num_processes, args, shared_model, actual_counter_string))
     p.start()
     processes.append(p)
 

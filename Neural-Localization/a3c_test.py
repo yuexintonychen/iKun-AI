@@ -7,9 +7,8 @@ from collections import deque
 
 import sys
 sys.path.append("../codes")
-import ikun_mission
 
-def test(rank, args, shared_model):
+def test(rank, args, shared_model, actual_counter_string):
     args.seed = args.seed + rank
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
@@ -40,8 +39,10 @@ def test(rank, args, shared_model):
     state, depth = env.reset()
     state = torch.from_numpy(state).float()
 
-    actionHistFile = open("action_history.txt", "w+")
+    #actionHistFile = open("action_history"+str(ikun_mission.actionHistCounter)+".txt", "w+")
     
+    actionHistFile = open("action_history_" + actual_counter_string + "_.txt", "w+")
+
     while True:
         episode_length += 1
         if done:
@@ -103,6 +104,7 @@ def test(rank, args, shared_model):
 
             if(len(rewards_list) >= test_freq):
                 trFile = open("training_result.txt", "w+")
+                efFile = open("Eval_Stats.txt", "a")
                 time_elapsed = time.gmtime(time.time() - start_time)
                 trFile.write(" ".join([
                     #"Time: {0:0=2d}d".format(time_elapsed.tm_mday-1),
@@ -111,6 +113,9 @@ def test(rank, args, shared_model):
                     "Avg Accuracy: {0:.3f},".format(np.mean(accuracy_list)),
                     "Best Reward: {0:.3f}".format(best_reward)]))
                 trFile.close()
+                efFile.write(
+                    "Avg Accuracy: {0:.3f} ".format(np.mean(accuracy_list))
+                )
                 logging.info(" ".join([
                     "Time: {0:0=2d}d".format(time_elapsed.tm_mday-1),
                     "{},".format(time.strftime("%Hh %Mm %Ss", time_elapsed)),
