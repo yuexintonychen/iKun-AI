@@ -503,6 +503,7 @@ def test_moving(agent_host, directions, grid):
             agent_current_position_xy_in_maze , "and it is at index_of_grid:", agent_current_position_index_in_grid)
         #agent_current_direction = original_direction
         time.sleep(2)
+        print("Sleep finish, going to next...")
 
 def execute_action_list(agent_host, directions):
     # same as test_moving function, but without printing log
