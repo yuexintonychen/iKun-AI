@@ -23,3 +23,13 @@ INFO:root:Time: 00d 00h 00m 00s, Avg Reward: nan, Avg Accuracy: 0.000, Best Rewa
 INFO:root:Time: 00d 00h 00m 00s, Avg Reward: nan, Avg Accuracy: 0.000, Best Reward: 0.000
 INFO:root:Time: 00d 00h 00m 00s, Avg Reward: 13.250, Avg Accuracy: 1.000, Best Reward: 0.000
 INFO:root:Time: 00d 00h 00m 00s, Avg Reward: 13.250, Avg Accuracy: 1.000, Best Reward: 0.000
+INFO:root:Time: 00d 00h 01m 31s, Avg Reward: 17.435, Avg Accuracy: 0.478, Best Reward: 0.000
+INFO:root:Time: 00d 00h 03m 00s, Avg Reward: 17.570, Avg Accuracy: 0.491, Best Reward: 17.435
+INFO:root:Time: 00d 00h 04m 18s, Avg Reward: 17.853, Avg Accuracy: 0.494, Best Reward: 17.570
+INFO:root:Time: 00d 00h 05m 39s, Avg Reward: 17.239, Avg Accuracy: 0.473, Best Reward: 17.853
+INFO:root:Time: 00d 00h 07m 10s, Avg Reward: 17.455, Avg Accuracy: 0.482, Best Reward: 17.853
+INFO:root:Time: 00d 00h 08m 34s, Avg Reward: 17.130, Avg Accuracy: 0.469, Best Reward: 17.853
+INFO:root:Time: 00d 00h 10m 02s, Avg Reward: 17.591, Avg Accuracy: 0.493, Best Reward: 17.853
+INFO:root:Time: 00d 00h 11m 41s, Avg Reward: 17.655, Avg Accuracy: 0.500, Best Reward: 17.853
+INFO:root:Time: 00d 00h 13m 11s, Avg Reward: 17.940, Avg Accuracy: 0.516, Best Reward: 17.853
+INFO:root:Time: 00d 00h 14m 41s, Avg Reward: 17.776, Avg Accuracy: 0.512, Best Reward: 17.940
