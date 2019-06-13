@@ -103,8 +103,8 @@ def test(rank, args, shared_model, actual_counter_string):
             accuracy_list.append(accuracy)
 
             if(len(rewards_list) >= test_freq):
-                trFile = open("training_result.txt", "w+")
-                efFile = open("Eval_Stats.txt", "a")
+                trFile = open("training_result.txt", "a")
+                esFile = open("Eval_Stats.txt", "a")
                 time_elapsed = time.gmtime(time.time() - start_time)
                 trFile.write(" ".join([
                     #"Time: {0:0=2d}d".format(time_elapsed.tm_mday-1),
@@ -112,10 +112,13 @@ def test(rank, args, shared_model, actual_counter_string):
                     "Avg Reward: {0:.3f},".format(np.mean(rewards_list)),
                     "Avg Accuracy: {0:.3f},".format(np.mean(accuracy_list)),
                     "Best Reward: {0:.3f}".format(best_reward)]))
+                trFile.write("\n")
                 trFile.close()
-                efFile.write(
+                esFile.write(
                     "Avg Accuracy: {0:.3f} ".format(np.mean(accuracy_list))
                 )
+                esFile.write("\n")
+                esFile.close()
                 logging.info(" ".join([
                     "Time: {0:0=2d}d".format(time_elapsed.tm_mday-1),
                     "{},".format(time.strftime("%Hh %Mm %Ss", time_elapsed)),

@@ -1,31 +1,197 @@
 
-Avg Accuracy: 1.000 Avg Accuracy: 1.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Avg Accuracy: 1.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Avg Accuracy: 0.000 Run #1
-Training Time: 3.061479330062866 Agent Travel Time: 5.253049850463867
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 1.000 
+Avg Accuracy: 0.000 
+Run #1
+Training Time: 3.1368799209594727 Agent Travel Time: 4.962818622589111
 
 Run #2
-Training Time: 3.0522682666778564 Agent Travel Time: 8.891409635543823
+Training Time: 3.0590860843658447 Agent Travel Time: 4.550673961639404
 
 Run #3
-Training Time: 3.0726606845855713 Agent Travel Time: 5.045647144317627
+Training Time: 3.065563440322876 Agent Travel Time: 3.7414278984069824
 
 Run #4
-Training Time: 3.1018402576446533 Agent Travel Time: 5.249284982681274
+Training Time: 3.071345806121826 Agent Travel Time: 3.638824939727783
 
 Run #5
-Training Time: 3.145237922668457 Agent Travel Time: 2.7114975452423096
+Training Time: 3.084177255630493 Agent Travel Time: 2.611569404602051
 
 Run #6
-Training Time: 3.056964159011841 Agent Travel Time: 3.9270591735839844
+Training Time: 3.0685877799987793 Agent Travel Time: 3.947122573852539
 
 Run #7
-Training Time: 3.067460775375366 Agent Travel Time: 3.318791389465332
+Training Time: 3.065608024597168 Agent Travel Time: 2.5130321979522705
 
 Run #8
-Training Time: 3.060115337371826 Agent Travel Time: 3.92340350151062
+Training Time: 3.059607744216919 Agent Travel Time: 4.035181045532227
 
 Run #9
-Training Time: 3.0459535121917725 Agent Travel Time: 6.654412508010864
+Training Time: 3.085160493850708 Agent Travel Time: 6.761320352554321
 
 Run #10
-Training Time: 3.054408550262451 Agent Travel Time: 5.851222276687622
+Training Time: 3.0647776126861572 Agent Travel Time: 5.077264308929443
+
+Run #11
+Training Time: 3.0732014179229736 Agent Travel Time: 5.464723110198975
+
+Run #12
+Training Time: 3.067636251449585 Agent Travel Time: 4.240360975265503
+
+Run #13
+Training Time: 3.053834915161133 Agent Travel Time: 4.440064907073975
+
+Run #14
+Training Time: 3.0885043144226074 Agent Travel Time: 4.646507740020752
+
+Run #15
+Training Time: 3.0612895488739014 Agent Travel Time: 6.878652334213257
+
+Run #16
+Training Time: 3.062333822250366 Agent Travel Time: 2.919341564178467
+
+Run #17
+Training Time: 3.061525583267212 Agent Travel Time: 4.3451762199401855
+
+Run #18
+Training Time: 3.0660665035247803 Agent Travel Time: 3.4327712059020996
+
+Run #19
+Training Time: 3.0638716220855713 Agent Travel Time: 5.65362548828125
+
+Run #20
+Training Time: 3.063660144805908 Agent Travel Time: 4.941170930862427
+
+Run #21
+Training Time: 3.0611770153045654 Agent Travel Time: 4.140928506851196
+
+Run #22
+Training Time: 3.05936861038208 Agent Travel Time: 3.2193872928619385
+
+Run #23
+Training Time: 3.0699338912963867 Agent Travel Time: 5.562994718551636
+
+Run #24
+Training Time: 3.06710147857666 Agent Travel Time: 4.143159866333008
+
+Run #25
+Training Time: 3.0771102905273438 Agent Travel Time: 8.185742139816284
+
+Run #26
+Training Time: 3.075228214263916 Agent Travel Time: 7.484904050827026
+
+Run #27
+Training Time: 3.0751845836639404 Agent Travel Time: 3.5324604511260986
+
+Run #28
+Training Time: 3.0911850929260254 Agent Travel Time: 6.479414939880371
+
+Run #29
+Training Time: 3.116576910018921 Agent Travel Time: 3.429799795150757
+
+Run #30
+Training Time: 3.0972607135772705 Agent Travel Time: 3.122997760772705
+
+Run #31
+Training Time: 3.0530624389648438 Agent Travel Time: 2.2083797454833984
+
+Run #32
+Training Time: 3.0693881511688232 Agent Travel Time: 2.920135259628296
+
+Run #33
+Training Time: 3.064088821411133 Agent Travel Time: 4.150098562240601
+
+Run #34
+Training Time: 3.0638315677642822 Agent Travel Time: 2.714216947555542
+
+Run #35
+Training Time: 3.1138882637023926 Agent Travel Time: 6.161032438278198
+
+Run #36
+Training Time: 3.0492465496063232 Agent Travel Time: 4.335737943649292
+
+Run #37
+Training Time: 3.0734972953796387 Agent Travel Time: 4.152998208999634
+
+Run #38
+Training Time: 3.0633153915405273 Agent Travel Time: 5.143136501312256
+
+Run #39
+Training Time: 3.0667874813079834 Agent Travel Time: 5.75794529914856
+
+Run #40
+Training Time: 3.0672414302825928 Agent Travel Time: 4.548685073852539
+
+Run #41
+Training Time: 3.07395601272583 Agent Travel Time: 2.105541229248047
+
+Run #42
+Training Time: 3.0653083324432373 Agent Travel Time: 3.9355130195617676
+
+Run #43
+Training Time: 3.0628225803375244 Agent Travel Time: 7.27245306968689
+
+Run #44
+Training Time: 3.070241689682007 Agent Travel Time: 6.152368783950806
+
+Run #45
+Training Time: 3.0802481174468994 Agent Travel Time: 3.8260324001312256
+
+Run #46
+Training Time: 3.05856990814209 Agent Travel Time: 3.731785774230957
+
+Run #47
+Training Time: 4.816541433334351 Agent Travel Time: 3.425586700439453
+
+Run #48
+Training Time: 4.777059316635132 Agent Travel Time: 8.075778484344482
+
+Run #49
+Training Time: 4.895946979522705 Agent Travel Time: 5.558403491973877
+
+Run #50
+Training Time: 4.845299959182739 Agent Travel Time: 3.221951961517334
 

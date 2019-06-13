@@ -36,7 +36,11 @@ def get_all_likelihoods(map_design):
         for i, element in np.ndenumerate(all_likelihoods[0, orientation]):
             depth = get_depth(map_design, i, orientation)
             if depth > 0:
-                all_likelihoods[int(depth) - 1][orientation][i] += 1
+                try:
+                    all_likelihoods[int(depth) - 1][orientation][i] += 1
+                except IndexError:
+                    print('The error come from: ',"all_likelihoods: ", len(all_likelihoods),"depth: ", int(depth) - 1, "Orientation: ", len(orientation))
+                    raise("Stop here")
     return all_likelihoods
 
 

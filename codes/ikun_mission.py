@@ -12,6 +12,7 @@ import json
 import re
 import copy
 import numpy as np
+import random
 from multiprocessing import Process
 
 # parameters (fixed)
@@ -725,7 +726,7 @@ def main():
         exit(0)
 
     # The following one line is for setting how many times you want the agent to repeat
-    num_repeats = 10
+    num_repeats = 50
 
     esFile = open("Eval_Stats.txt", "w+")
     esFile.write("\n")
@@ -733,14 +734,22 @@ def main():
 
     esFile = open("Eval_Stats.txt", "a")
 
+    trFile = open("training_result.txt", "w+")
+    trFile.write("\n")
+    trFile.close()
+
+    trFile = open("training_result.txt", "a")
+
     for i in range(num_repeats):
         esFile.write("Run #"+str(i+1)+"\n")
         actionHistCounter = i+1
         # size = int(6 + 0.5*i)
         print("Size of maze:", size_of_maze)
         #my_mission = MalmoPython.MissionSpec(get_mission_xml("0", 0.4 + float(i/20.0), size_of_maze, 0), True)
-        print("Parameters of the mission:", str(i), "next:", 0.4 + float(i/20.0), "size:", size_of_maze)
-        my_mission = MalmoPython.MissionSpec(get_mission_xml(str(i), 0.4 + float(i/20.0), size_of_maze, 0), True)
+        randomDif = random.uniform(-0.2, 0.2)
+
+        print("Parameters of the mission:", str(i), "next:", 0.4 + randomDif, "size:", size_of_maze)
+        my_mission = MalmoPython.MissionSpec(get_mission_xml(str(i), 0.4 + randomDif, size_of_maze, 0), True)
         # my_mission = MalmoPython.MissionSpec(get_mission_xml(), True)
         my_mission_record = MalmoPython.MissionRecordSpec()
         my_mission.requestVideo(800, 500)
@@ -835,8 +844,22 @@ def main():
         
         while True:
             if not is_complete_action_history:
-                actionHistFile = open("action_history_"+str(actionHistCounter)+"_.txt", "r")
-                stringList = actionHistFile.readlines()
+                
+                actionHistFile = None
+                while True:
+                    try:
+                        actionHistFile = open("action_history_"+str(actionHistCounter)+"_.txt", "r")
+                        stringList = actionHistFile.readlines()
+                        if len(stringList) != 0:
+                            break
+                    except:
+                        continue
+                
+
+                #actionHistFile = open("action_history_"+str(actionHistCounter)+"_.txt", "r")
+
+
+                #stringList = actionHistFile.readlines()
                 print("Reading action history file, get string: ", stringList)
                 curr_action_list = stringList[0].split(' ')
                 actionHistFile.close()
@@ -927,6 +950,7 @@ def main():
 
         print("Aiku did it!")
     
+    trFile.close()
     esFile.close()
 
 if __name__ == "__main__":
