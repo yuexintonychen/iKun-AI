@@ -12,6 +12,7 @@ import json
 import re
 import copy
 import numpy as np
+from multiprocessing import Process
 
 # parameters (fixed)
 AGENT_OBSERVATION_LENGTH = 61
@@ -502,7 +503,7 @@ def test_moving(agent_host, directions, grid):
         print("After making a move of [" + str(direction) + "], the agent is at xy_maze:", \
             agent_current_position_xy_in_maze , "and it is at index_of_grid:", agent_current_position_index_in_grid)
         #agent_current_direction = original_direction
-        time.sleep(2)
+        time.sleep(0.05)
         print("Sleep finish, going to next...")
 
 def execute_action_list(agent_host, directions):
@@ -702,6 +703,9 @@ def directionConvert(direction):
         converted = 3
     return converted
 
+def missionTrainingStart(actionHistCounter):
+    os.system("python ../Neural-Localization/a3c_main_bak.py --num-processes 0 --evaluate 1 --map-size 21 --max-episode-length 60 --load ../Neural-Localization/pretrained_models/m21_l60 --test-data ../Neural-Localization/test_data/hello.npy --counter " + str(actionHistCounter))
+
 def main():
     # Start mission
     # Create default Malmo objects:
@@ -820,23 +824,49 @@ def main():
         positionTransition(grid, matrixArray, yaw_of_agent, size_of_maze)
 
         trainingStart = time.time()
-        os.system("python ../Neural-Localization/a3c_main.py --num-processes 0 --evaluate 1 --map-size 21 --max-episode-length 60 --load ../Neural-Localization/pretrained_models/m21_l60 --test-data ../Neural-Localization/test_data/hello.npy --counter " + str(actionHistCounter))
+
+        trainingProcess = Process(target = missionTrainingStart, args = (actionHistCounter,))
+        trainingProcess.start()
 
         stringList = []
+        is_complete_action_history = False
+
+        curr_action_counter = 0
         
         while True:
-            actionHistFile = open("action_history_"+str(actionHistCounter)+"_.txt", "r")
-            stringList = actionHistFile.readlines()
-            if (stringList[len(stringList)-1] == "END"):
+            if not is_complete_action_history:
+                actionHistFile = open("action_history_"+str(actionHistCounter)+"_.txt", "r")
+                stringList = actionHistFile.readlines()
+                print("Reading action history file, get string: ", stringList)
+                curr_action_list = stringList[0].split(' ')
+                actionHistFile.close()
+
+            print("Here is the list length:", len(curr_action_list), curr_action_counter+1)
+
+            try:
+                if (len(curr_action_list) >= curr_action_counter+1):
+                    action = curr_action_list[curr_action_counter]
+                    convertAction = directionConvert(int(action[0]))
+                    test_moving(agent_host,[convertAction], grid)
+                    curr_action_counter+=1
+            except ValueError:
+                # The last index of action is a newline character
                 break
+
+            if (stringList[len(stringList)-1] == "END"):
+                is_complete_action_history = True
+
+            if (is_complete_action_history and len(curr_action_list) == curr_action_counter - 1):
+                break
+
+        trainingProcess.join()
         trainingEnd = time.time()
         trainingElapsed = trainingEnd - trainingStart
         esFile.write("Training Time: " + str(trainingElapsed) + " ")
 
-        actionHistFile.close()
-        
-        #actionList = []
+        #actionHistFile.close()
 
+        '''
         print(stringList)
         actionCollection = []
         positionCollection = []
@@ -849,6 +879,9 @@ def main():
 
         print('The original: ',actionCollection)
         print(positionCollection)
+        '''
+
+       
         """
         del stringList[-1]
         for string in stringList:
@@ -865,6 +898,8 @@ def main():
 
             test_moving(agent_host, testingset)
         """
+
+        '''
         actionList = []
         
         for index in range(len(actionCollection)):
@@ -879,6 +914,7 @@ def main():
         print('The list:', actionList)
         #raise('STOP HERE')
         test_moving(agent_host, actionList, grid)
+        '''
         
         print("Training complete. Training result can be found in training_result.txt.")
 

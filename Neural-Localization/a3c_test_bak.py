@@ -85,8 +85,8 @@ def test(rank, args, shared_model, actual_counter_string):
         action = prob.max(1)[1].data.numpy()[0]
         
         state, reward, done, depth = env.step(action)
-        print('The action:', action)
-        print('The environment: ',  env.position)
+        #print('The action:', action)
+        #print('The environment: ',  env.position)
         actionHistFile.write(str(int(action)) + "," + str(int(env.position[0])) + "," + str(int(env.position[1])) + " ")
         done = done or episode_length >= args.max_episode_length
         reward_sum += reward

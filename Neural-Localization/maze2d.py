@@ -25,7 +25,7 @@ class Maze2D(object):
             self.map_design = maze[:-3].reshape(self.args.map_size,
                                                 self.args.map_size)
             self.test_maze_idx += 1
-            print('The map info: ', self.map_design)
+            #print('The map info: ', self.map_design)
         else:
             maze_in_test_data = True
 

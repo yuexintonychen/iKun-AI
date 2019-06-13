@@ -9,7 +9,7 @@ import torch.multiprocessing as mp
 from maze2d import *
 from model import *
 from a3c_train import train
-from a3c_test import test
+from a3c_test_bak import test
 
 import logging
 
