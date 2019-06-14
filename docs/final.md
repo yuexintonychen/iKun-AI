@@ -26,6 +26,8 @@ The pre-trained model we used is based on the model in the Active Neural Localiz
 
 
 ## Evaluation
+A very crucial aspect in how our agent complete its mission is how it determines which route to take, which heavily depends on the rewards system. At each time step, the agent will make a belief guess based on its orientation and position on the maze and select the largest belief value from the set of belief guesses. The belief made at the moment of selection will the reward for the current time step.
+
 For evaluation, we've run the agent with the A3C algorithm within a controlled set of mazes (with specified maze sizes and action limits). Specifically, the maze size is set as 21 (a 21x21 square maze), and the action limit is set as 60 (the max number of actions that the agent is allowed to play during a test is 60). 
 
 In order to evaluate the overall performance of our agent, we have collected the following categories of statistical data during the 10 tests: the number of actions the agent has taken during training (60 actions for each test), the time taken for fitting the maze map to the pre-trained model (during each test), the time taken for the agent to determine the shortest path from start to end after the agent determines its current position (using the pre-trained model, during each test) and the success/failure rate of the 10 tests. 
