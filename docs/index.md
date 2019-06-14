@@ -1,4 +1,4 @@
----
+﻿---
 layout: default
 title:  Home
 ---
@@ -16,14 +16,22 @@ That is why we give her instructions by our intelligent algorithm with Deep Q-le
 
 
 
-<img src="scene1.png" alt="drawing" width = 500, height=400>
-<img src="scene2.png" alt="drawing" width = 500, height=400>
-<img src="scene3.png" alt="drawing" width = 500, height=400>
-<img src="scene4.png" alt="drawing" width = 500, height=400>
-<img src="scene5.png" alt="drawing" width = 500, height=400>
-<img src="scene6.png" alt="drawing" width = 500, height=400>
-<img src="scene7.png" alt="drawing" width = 500, height=400>
-<img src="scene8.png" alt="drawing" width = 500, height=400>
+<img src="scene1.png" alt="drawing" width = 500, height=400> 
+
+<img src="scene2.png" alt="drawing" width = 500, height=400> 
+
+<img src="scene3.png" alt="drawing" width = 500, height=400> 
+
+<img src="scene4.png" alt="drawing" width = 500, height=400> 
+
+<img src="scene5.png" alt="drawing" width = 500, height=400> 
+
+<img src="scene6.png" alt="drawing" width = 500, height=400> 
+
+<img src="scene7.png" alt="drawing" width = 500, height=400> 
+
+<img src="scene8.png" alt="drawing" width = 500, height=400> 
+
 
 In this Minecraft World, Aiku finds herslef 
 at somewhere of a maze. She receives a 
