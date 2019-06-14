@@ -32,20 +32,19 @@ In order to evaluate the overall performance of our agent, we have collected the
 
 <img src="Training_Time_Comparison.png" width="1000"> 
 
-Based on the training time graph, the aveage time taken for fitting the maze map to the pre-trained model among 50 tests is 3.21 seconds. The standard deviation is 0.48 seconds.
+Based on the training time graph, the aveage time taken for fitting the maze map to the pre-trained model among 50 tests is 3.21 seconds. The standard deviation is 0.48 seconds. In our first version of iKun AI, the aveage time taken for fitting the maze map to the pre-trained model among 10 tests was 15.08 seconds. The standard deviation was 0.01 seconds. In comparison, our improved agent has significantly faster training speed. 
 
 <img src="agent_travel_time_comparison.png" width="1000"> 
 
-Based on the agent travel time graph, the aveage time taken for the agent to determine the shortest path from start to end after the agent determines its current position among 50 tests is 4.6 seconds. The standard deviation is 1.49 seconds.
+Based on the agent travel time graph, the aveage time taken for the agent to determine the shortest path from start to end after the agent determines its current position among 50 tests is 4.6 seconds. The standard deviation is 1.49 seconds. In our first version of iKun AI, the aveage time taken for the agent to determine the shortest path from start to end after the agent determines its current position among 10 tests was 5.09 seconds. The standard deviation was 1.63 seconds. In comparison, our improved agent has a travel speed that is about half of a second faster than that of the first version agent.  
 
 <img src="Final_Count.png" width="1000"> 
 
-According to the success/failure graph above, our agent current has an approximate success rate of 80% given a random maze with a specified maze sizes and action limits. 
+According to the success/failure graph above, our agent current has an approximate success rate of 54% given a random maze with a specified maze sizes and action limits. In our first version of iKun AI, our agent had an approximate success rate of 30% given a random maze with a specified maze sizes and action limits. In comparison, our improved agent has 24% better success rate than that of the first version agent. 
 
 
 ## Remaining Goals and Challenges
-Currently our agent's relies on the pre-trained models (within sizes of 7, 15, 21) provided in the Active Neural Localization project, limiting our agenet's capability of exploration and the variability of maze sizes. In the final stage, we plan to train our own models with dynamic sizes of 2D mazes. For moonshot cases, we plan to add monsters, traps to the mazes or even make the mazes be 3D, which significantly increases the complexity of the world for the agent to perceive. The agent carries a weapon that is a type of consumable, which can be used to fight against monsters. In the optimal scenario, the agent will reach the goal. 
-Also, if project Malmo allows, we will be optimizing the animations conducted by our agent (such as moving around and turning his/her orientation). 
+Currently our agent's still relies on the pre-trained models (within sizes of 7, 15, 21) provided in the Active Neural Localization project, limiting our agenet's capability of exploration and the variability of maze sizes. After this final stage, we plan to train our own models with dynamic sizes of 2D mazes. For moonshot cases, we plan to add monsters, traps to the mazes or even make the mazes be 3D, which significantly increases the complexity of the world for the agent to perceive. The agent carries a weapon that is a type of consumable, which can be used to fight against monsters. In the optimal scenario, the agent will reach the goal. Furthermore, if project Malmo allows, we will be optimizing the animations conducted by our agent (such as moving around and turning his/her orientation). We have tried to verify the feasibility of training a A3C model with map size of 99 by 99 unit blocks and have obtained a partially successful result to a certain degree, due to the very limited computing power that we have. Even though the numerical increase from 21x21 to 99x99 is about 4.5 times, the actual computing power needed for the larger scale training increases exponentially. 
 
 
 ## Resources Used

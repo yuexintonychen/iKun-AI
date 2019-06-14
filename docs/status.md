@@ -2,7 +2,7 @@
 layout: default
 title:  status Report
 ---
-[Video Demo Link](https://www.youtube.com/watch?v=N5fgy7eh4qg&t=3s) 
+[Video Demo Link](https://www.youtube.com/watch?v=N5fgy7eh4qg) 
 
 <iframe width="1000" height="563" src="https://www.youtube.com/embed/N5fgy7eh4qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -39,7 +39,7 @@ Based on the agent travel time graph, the aveage time taken for the agent to det
 
 <img src="Count.png" width="1000"> 
 
-According to the success/failure graph above, our agent current has an approximate success rate of 80% given a random maze with a specified maze sizes and action limits. 
+According to the success/failure graph above, our agent currently has an approximate success rate of 30% given a random maze with a specified maze sizes and action limits. 
 
 
 ## Remaining Goals and Challenges
