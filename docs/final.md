@@ -4,7 +4,7 @@ title:  Final Report
 ---
 [Video Demo Link](https://www.youtube.com/watch?v=N5fgy7eh4qg&t=3s) 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/N5fgy7eh4qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="1000" src="https://www.youtube.com/embed/N5fgy7eh4qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Project Summary
 Our project makes use of Deep Q-Learning with Neural Network to let the agent find the shortest path between the source/starting block (unknown to the agent initially) and the destination block (unknown to the agent initially) in a pre-build 2D maze. The agent will be led to play in a set of pre-built Minecraft 2D mazes. The agent is able to see the voxels in front of its sight, which is similar to what a normal player can see in Minecraft (however, we might also change this to be a small range of voxels around the agent). The agent is given the full map of a maze, but it does not know source/starting block (the agent needs to locate itself on the map first) and the destination block (the agent needs to find its way out of the maze). The agent's goal is trying to locate itself first and then get out of the maze as fast as possible using the limited resources we have given to the agent. The final output (for each maze/test) is the starting block of the agent and a set of positions of blocks ordered by the path sequence found by the agent (if optimal, should be the shortest path between agent's starting block and the destination block). 
@@ -32,11 +32,11 @@ In order to evaluate the overall performance of our agent, we have collected the
 
 <img src="Training_Time_Comparison.png" width="1000"> 
 
-Based on the training time graph, the aveage time taken for fitting the maze map to the pre-trained model among 10 tests is 1.70 seconds. The standard deviation is 0.17 seconds.
+Based on the training time graph, the aveage time taken for fitting the maze map to the pre-trained model among 50 tests is 3.21 seconds. The standard deviation is 0.48 seconds.
 
 <img src="agent_travel_time_comparison.png" width="1000"> 
 
-Based on the agent travel time graph, the aveage time taken for the agent to determine the shortest path from start to end after the agent determines its current position among 10 tests is 5.09 seconds. The standard deviation is 1.80 seconds.
+Based on the agent travel time graph, the aveage time taken for the agent to determine the shortest path from start to end after the agent determines its current position among 50 tests is 4.6 seconds. The standard deviation is 1.49 seconds.
 
 <img src="Final_Count.png" width="1000"> 
 

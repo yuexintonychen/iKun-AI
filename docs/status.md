@@ -4,7 +4,7 @@ title:  status Report
 ---
 [Video Demo Link](https://www.youtube.com/watch?v=N5fgy7eh4qg&t=3s) 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/N5fgy7eh4qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="1000" src="https://www.youtube.com/embed/N5fgy7eh4qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Project Summary
@@ -32,18 +32,18 @@ In order to evaluate the overall performance of our agent, we have collected the
 
 <img src="Training_Time.png" width="1000"> 
 
-Based on the training time graph, the aveage time taken for fitting the maze map to the pre-trained model among 10 tests is 1.70 seconds. The standard deviation is 0.17 seconds.
+Based on the training time graph, the aveage time taken for fitting the maze map to the pre-trained model among 10 tests is 15.08 seconds. The standard deviation is 0.01 seconds.
 
 <img src="agent_travel_time.png" width="1000"> 
 
-Based on the agent travel time graph, the aveage time taken for the agent to determine the shortest path from start to end after the agent determines its current position among 10 tests is 5.09 seconds. The standard deviation is 1.80 seconds.
+Based on the agent travel time graph, the aveage time taken for the agent to determine the shortest path from start to end after the agent determines its current position among 10 tests is 5.09 seconds. The standard deviation is 1.63 seconds.
 
 <img src="Count.png" width="1000"> 
 
 According to the success/failure graph above, our agent current has an approximate success rate of 80% given a random maze with a specified maze sizes and action limits. 
 
 
-#### Remaining Goals and Challenges
+## Remaining Goals and Challenges
 Currently our agent's relies on the pre-trained models (within sizes of 7, 15, 21) provided in the Active Neural Localization project, limiting our agenet's capability of exploration and the variability of maze sizes. In the final stage, we plan to train our own models with dynamic sizes of 2D mazes. For moonshot cases, we plan to add monsters, traps to the mazes or even make the mazes be 3D, which significantly increases the complexity of the world for the agent to perceive. The agent carries a weapon that is a type of consumable, which can be used to fight against monsters. In the optimal scenario, the agent will reach the goal. 
 Also, if project Malmo allows, we will be optimizing the animations conducted by our agent (such as moving around and turning his/her orientation). 
 
