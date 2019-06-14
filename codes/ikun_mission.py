@@ -504,7 +504,7 @@ def test_moving(agent_host, directions, grid):
         print("After making a move of [" + str(direction) + "], the agent is at xy_maze:", \
             agent_current_position_xy_in_maze , "and it is at index_of_grid:", agent_current_position_index_in_grid)
         #agent_current_direction = original_direction
-        time.sleep(0.25)
+        time.sleep(0.05)
         print("Sleep finish, going to next...")
 
 def execute_action_list(agent_host, directions):
@@ -726,7 +726,7 @@ def main():
         exit(0)
 
     # The following one line is for setting how many times you want the agent to repeat
-    num_repeats = 10
+    num_repeats = 50
 
     esFile = open("Eval_Stats.txt", "w+")
     esFile.write("\n")
@@ -748,8 +748,8 @@ def main():
         #my_mission = MalmoPython.MissionSpec(get_mission_xml("0", 0.4 + float(i/20.0), size_of_maze, 0), True)
         randomDif = random.uniform(-0.2, 0.2)
 
-        print("Parameters of the mission:", str(i), "next:", 0.4 + float(i/20.0), "size:", size_of_maze)
-        my_mission = MalmoPython.MissionSpec(get_mission_xml(str(i), 0.4 + float(i/20.0), size_of_maze, 0), True)
+        print("Parameters of the mission:", str(i), "next:", 0.4 + randomDif, "size:", size_of_maze)
+        my_mission = MalmoPython.MissionSpec(get_mission_xml(str(i), 0.4 + randomDif, size_of_maze, 0), True)
         # my_mission = MalmoPython.MissionSpec(get_mission_xml(), True)
         my_mission_record = MalmoPython.MissionRecordSpec()
         my_mission.requestVideo(800, 500)
