@@ -1,17 +1,17 @@
 ---
 layout: default
-title:  Status
+title:  Final Report
 ---
 [Video Demo Link](https://www.youtube.com/watch?v=N5fgy7eh4qg&t=3s) 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/N5fgy7eh4qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-#### Project Summary
+## Project Summary
 Our project makes use of Deep Q-Learning with Neural Network to let the agent find the shortest path between the source/starting block (unknown to the agent initially) and the destination block (unknown to the agent initially) in a pre-build 2D maze. The agent will be led to play in a set of pre-built Minecraft 2D mazes. The agent is able to see the voxels in front of its sight, which is similar to what a normal player can see in Minecraft (however, we might also change this to be a small range of voxels around the agent). The agent is given the full map of a maze, but it does not know source/starting block (the agent needs to locate itself on the map first) and the destination block (the agent needs to find its way out of the maze). The agent's goal is trying to locate itself first and then get out of the maze as fast as possible using the limited resources we have given to the agent. The final output (for each maze/test) is the starting block of the agent and a set of positions of blocks ordered by the path sequence found by the agent (if optimal, should be the shortest path between agent's starting block and the destination block). 
 
 
-#### Approach
+## Approach
 In the project, we applied Bayesian filters to estimate the agent's location dependingon its observations and the actions. For the agent, at each time step ![](http://latex.codecogs.com/gif.latex?\\t) it has four known parameters: the map information ![](http://latex.codecogs.com/gif.latex?\\M \times N), the observation ![](http://latex.codecogs.com/gif.latex?\\s_{t}), taken action ![](http://latex.codecogs.com/gif.latex?\\a_{t}) and estimated position ![](http://latex.codecogs.com/gif.latex?\\y_{t}). 
 
 In our algorithm, at every time step, the agent will update its estimated position ![](http://latex.codecogs.com/gif.latex?\\y_{t}) by ![](http://latex.codecogs.com/gif.latex?\\Belief). 
@@ -25,7 +25,7 @@ After taking several actions, the agent will give an estimated position with the
 The pre-trained model we used is based on the model in the Active Neural Localization project developed by Carnegie Mellon University Ph.D. student Devendra Chaplot. The base model were trained with Asynchronous Advantage Actor Critic (A3C) learning algorithm using Stochastic Gradient Descent with a learning rate of 0.001. The weight for entropy regularization was 0.01. The discount factor ![](http://latex.codecogs.com/gif.latex?\\\gamma) for reinforcement learning was chosen to be 0.99. There were two sets of configuration of the model for 2D experiments and 3D experiments, respectively. Since we currently run our agent in all instances of 2D mazes, the pre-trained model under 2D experiments will be utilized. This model was trained with the use of multithreading (using torch.multiprocessing). The final data collected was the pre-trained model that has the best performance (accuracy) among all threads. Multiple training processes ran simultaneously when both training and testing. The pre-trained models are available for mazes with the size of 7, 15 and 21, with various lengths (agent's action number limit) of 15, 20, 30, 40, 60. Our demo uses size of 21 with length of 60 in this case to allow the agent perform the most actions with high accuracy. 
 
 
-#### Evaluation
+## Evaluation
 For evaluation, we've run the agent with the A3C algorithm within a controlled set of mazes (with specified maze sizes and action limits). Specifically, the maze size is set as 21 (a 21x21 square maze), and the action limit is set as 60 (the max number of actions that the agent is allowed to play during a test is 60). 
 
 In order to evaluate the overall performance of our agent, we have collected the following categories of statistical data during the 10 tests: the number of actions the agent has taken during training (60 actions for each test), the time taken for fitting the maze map to the pre-trained model (during each test), the time taken for the agent to determine the shortest path from start to end after the agent determines its current position (using the pre-trained model, during each test) and the success/failure rate of the 10 tests. 
@@ -48,7 +48,7 @@ Currently our agent's relies on the pre-trained models (within sizes of 7, 15, 2
 Also, if project Malmo allows, we will be optimizing the animations conducted by our agent (such as moving around and turning his/her orientation). 
 
 
-#### Resources Used
+## Resources Used
 [Active Neural Localization](https://arxiv.org/pdf/1801.08214.pdf) 
 
 [Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/pdf/1602.01783.pdf) 
