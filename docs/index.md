@@ -6,7 +6,7 @@ title:  Home
 Hello, welcome to our CompSci 175 AI Project - iKun AI's homepage!
 
 Here is our cute agent's prototype Aiku! 
-<img src="cute_aiku.png" alt="drawing" width=100, height=100>
+<img src="cute_aiku.png" alt="drawing" width="100">
 
 IKun AI is an Artificial Intelligence Project on Deep Q-Learning with Neural Network. The project is designed to let an agent play in a set of pre-built Minecraft 2D mazes. The agent is able to see the voxels in front of its sight, which is similar to what a normal player can see in Minecraft. The agent's goal is to get out of the maze as fast as possible using the limited resources that are given to the agent.
 
@@ -16,7 +16,7 @@ That is why we give her instructions by our intelligent algorithm with Deep Q-le
 
 
 
-<img src="scene1.png" alt="drawing" width = 500, height=400> 
+<img src="scene1.png" alt="drawing" width = "500",height="400"> 
 
 <img src="scene2.png" alt="drawing" width = 500, height=400> 
 
