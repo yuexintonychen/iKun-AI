@@ -1,15 +1,15 @@
 ---
 layout: default
-title:  status Report
+title:  Final Report
 ---
 [Video Demo Link](https://www.youtube.com/watch?v=N5fgy7eh4qg&t=3s) 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/N5fgy7eh4qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
 ## Project Summary
 Our project makes use of Deep Q-Learning with Neural Network to let the agent find the shortest path between the source/starting block (unknown to the agent initially) and the destination block (unknown to the agent initially) in a pre-build 2D maze. The agent will be led to play in a set of pre-built Minecraft 2D mazes. The agent is able to see the voxels in front of its sight, which is similar to what a normal player can see in Minecraft (however, we might also change this to be a small range of voxels around the agent). The agent is given the full map of a maze, but it does not know source/starting block (the agent needs to locate itself on the map first) and the destination block (the agent needs to find its way out of the maze). The agent's goal is trying to locate itself first and then get out of the maze as fast as possible using the limited resources we have given to the agent. The final output (for each maze/test) is the starting block of the agent and a set of positions of blocks ordered by the path sequence found by the agent (if optimal, should be the shortest path between agent's starting block and the destination block). 
 
+In the previous version, we found that the training time was pretty long. Particularly, in many conditions, the agent would take a long time to take his actions ie.turning around or moving forward while trying to evaluate his positions. In the Active Neural Localization project, once the agent hits the wall, he will return to his previous position. However, when the Minecraft agent simulates the actions from the Active Neural Localization project, he will directly fall into the lava which is considered as the walls in our minecraft project. The respwan will interrupt our simulation because the agent will start from the begining position. On the one hand, in the previous version, when we send the randomly generated map to the algorithm model, we have to wait for the training algorithm in the backend to finish analyzing all agent actions (by fitting a specific maze to the model) and then the agent in the frontend will simulate each action on the Minecraft map. However, in the improved version, our agent in the frontend can synchronously simulate the action at any particular moment once the algorithm in the backend generates an action. Synchronous simulation can better help us understand how the algorithm works and indicate directions to improve the algorithm or belief propagation equation.  
 
 ## Approach
 In the project, we applied Bayesian filters to estimate the agent's location dependingon its observations and the actions. For the agent, at each time step ![](http://latex.codecogs.com/gif.latex?\\t) it has four known parameters: the map information ![](http://latex.codecogs.com/gif.latex?\\M \times N), the observation ![](http://latex.codecogs.com/gif.latex?\\s_{t}), taken action ![](http://latex.codecogs.com/gif.latex?\\a_{t}) and estimated position ![](http://latex.codecogs.com/gif.latex?\\y_{t}). 
@@ -43,7 +43,7 @@ Based on the agent travel time graph, the aveage time taken for the agent to det
 According to the success/failure graph above, our agent current has an approximate success rate of 80% given a random maze with a specified maze sizes and action limits. 
 
 
-#### Remaining Goals and Challenges
+## Remaining Goals and Challenges
 Currently our agent's relies on the pre-trained models (within sizes of 7, 15, 21) provided in the Active Neural Localization project, limiting our agenet's capability of exploration and the variability of maze sizes. In the final stage, we plan to train our own models with dynamic sizes of 2D mazes. For moonshot cases, we plan to add monsters, traps to the mazes or even make the mazes be 3D, which significantly increases the complexity of the world for the agent to perceive. The agent carries a weapon that is a type of consumable, which can be used to fight against monsters. In the optimal scenario, the agent will reach the goal. 
 Also, if project Malmo allows, we will be optimizing the animations conducted by our agent (such as moving around and turning his/her orientation). 
 
@@ -56,3 +56,4 @@ Also, if project Malmo allows, we will be optimizing the animations conducted by
 [PyTorch implementation of the ICLR-18 paper](https://github.com/devendrachaplot/Neural-Localization) 
 
 [PyTorch implementation of Asynchronous Advantage Actor Critic (A3C)](https://github.com/ikostrikov/pytorch-a3c) 
+
