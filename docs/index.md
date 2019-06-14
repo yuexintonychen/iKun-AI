@@ -16,7 +16,7 @@ That is why we give her instructions by our intelligent algorithm with Deep Q-le
 
 
 
-<img src="scene1.png" alt="drawing" width = "500",height="400"> 
+<img src="scene1.png" alt="drawing" width = "500"> 
 
 <img src="scene2.png" alt="drawing" width = 500, height=400> 
 
